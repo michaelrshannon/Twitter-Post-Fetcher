@@ -1,5 +1,5 @@
 /*********************************************************************
-*  #### Twitter Post Fetcher v12.0 ####
+*  #### Twitter Post Fetcher v13.0 ####
 *  Coded by Jason Mayes 2013. A present to all the developers out there.
 *  www.jasonmayes.com
 *  Please keep this disclaimer with my code if you use it. Thanks. :-)
@@ -42,9 +42,14 @@ var twitterFetcher = function() {
   }
 
   function strip(data) {
-    return data.replace(/<b[^>]*>(.*?)<\/b>/gi, function(a,s){return s;})
+    data = data.replace(/<b[^>]*>(.*?)<\/b>/gi, function(a,s){return s;})
         .replace(/class=".*?"|data-query-source=".*?"|dir=".*?"|rel=".*?"/gi,
         '');
+    return addTargetBlankToLinks(data);
+  }
+
+  function addTargetBlankToLinks(data) {
+    return data.replace('<a ', '<a target="_blank"')
   }
 
   function getElementsByClassName (node, classname) {
