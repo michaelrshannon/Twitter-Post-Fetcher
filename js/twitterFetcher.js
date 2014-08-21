@@ -49,7 +49,7 @@ var twitterFetcher = function() {
   }
 
   function addTargetBlankToLinks(data) {
-    return data.replace('<a ', '<a target="_blank" ')
+    return data.replace('<a ', '<a target="_blank" ');
   }
 
   function getElementsByClassName (node, classname) {
